@@ -1,4 +1,4 @@
-## Lain Ikawura Bot
+# Lain Ikawura Bot
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue)
 ![Discord](https://img.shields.io/badge/Discord-Bot-green)
