@@ -6,8 +6,7 @@
 Lain Ikawura Bot es un bot de Discord escrito en Python que permite:
 
 - Reproducir música desde YouTube en canales de voz.
-- Usar **slash commands** modernos (`/join`, `/play`, `/leave`).
-- Mostrar un banner ASCII al iniciar el bot en la consola.
+- Lo basico, especializado para un server personal
 
 ---
 
