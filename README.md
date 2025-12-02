@@ -13,8 +13,7 @@ Lain Ikawura Bot es un bot de Discord escrito en Python que permite:
 ## Requisitos
 
 - Python 3.10 o superior
-- [FFmpeg](https://ffmpeg.org/) instalado y agregado al PATH
-- Librerías de Python:
+- [yt-dlp](https://github.com/yt-dlp/yt-dlp) instalado y agregado al PATH
 
-```bash
-pip install py-cord yt-dlp PyNaCl
+### Librerias
+discord
