@@ -2,7 +2,6 @@
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue)
 ![Discord](https://img.shields.io/badge/Discord-Bot-green)
-![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
 Lain Ikawura Bot es un bot de Discord escrito en Python que permite:
 
