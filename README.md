@@ -11,12 +11,6 @@ Lain Ikawura Bot es un bot de Discord (only is Spanish):
 ---
 
 ## Requisitos
-
-- Python 3.10 o superior
-- [yt-dlp](https://github.com/yt-dlp/yt-dlp) instalado y agregado al PATH
-- pip install discord
-- pip install spotipy
-
 ```bash
 pip install -U yt-dlp
 pip install discord
