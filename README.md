@@ -17,7 +17,7 @@ Lain Ikawura Bot es un bot de Discord (only is Spanish):
 - pip install discord
 - pip install spotipy
 
-'''bash'''
+```bash
 pip install -U yt-dlp
 pip install discord
 pip install spotipy
