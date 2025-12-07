@@ -3,7 +3,7 @@
 ![Python](https://img.shields.io/badge/Python-3.10+-blue)
 ![Discord](https://img.shields.io/badge/Discord-Bot-green)
 
-Lain Ikawura Bot es un bot de Discord (only is Spanish):
+Lain Ikawura Bot es un bot de Discord (Spanish only):
 
 - Reproducir música desde YouTube en canales de voz.
 - Reproducir música desde Spotify en canales de voz.
