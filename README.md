@@ -6,6 +6,7 @@
 Lain Ikawura Bot es un bot de Discord (only is Spanish):
 
 - Reproducir música desde YouTube en canales de voz.
+- Reproducir música desde Spotify en canales de voz.
 - Lo basico, especializado para un server personal
 
 ---
