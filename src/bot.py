@@ -21,6 +21,7 @@ banner = r"""
   | $$  | $$ | $$ | $$ /$$__  $$| $$_  $$ | $$  | $$| $$      /$$__  $$
  /$$$$$$|  $$$$$/$$$$/|  $$$$$$$| $$ \  $$|  $$$$$$/| $$     |  $$$$$$$
 |______/ \_____/\___/  \_______/|__/  \__/ \______/ |__/      \_______/
+made by RoaHam
 """
 print(banner)
 
@@ -40,13 +41,13 @@ async def on_ready():
         synced = await bot.tree.sync()
         print(f"Comandos sincronizados: {len(synced)}")
         for cmd in synced:
-            print(f"- {cmd.name}")
+            print(f"{cmd.name}")
     except Exception as e:
         print(f"Error al sincronizar comandos: {e}")
 
 
 async def main():
-    for filename in os.listdir("./commands"):
+    for filename in os.listdir("./src/commands"):
         if filename.endswith(".py") and not filename.startswith("_"):
             await bot.load_extension(f"commands.{filename[:-3]}")
 
