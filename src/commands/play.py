@@ -55,24 +55,34 @@ class Play(commands.Cog):
         if not audio_url:
             await text_channel.send(f"No he podido cargar: **{next_item.get('title','Desconocido')}**")
             queue.pop(0)
-            return await self.play_next(guild, text_channel)
+            await self.play_next(guild, text_channel)
+            return
 
         def after(err):
             if self.loop_enabled.get(guild.id, False):
                 queue.append(next_item)
             queue.pop(0)
-            asyncio.run_coroutine_threadsafe(
-                self.play_next(guild, text_channel),
-                self.bot.loop
-            )
+
+            asyncio.run_coroutine_threadsafe(self.play_next(guild, text_channel), self.bot.loop)
+
+            autoplay_cog = self.bot.get_cog("Autoplay")
+            if autoplay_cog and autoplay_cog.autoplay_enabled.get(guild.id, False):
+                asyncio.run_coroutine_threadsafe(
+                    autoplay_cog.maybe_add_next(guild, text_channel),
+                    self.bot.loop
+                )
 
         vc.play(
             discord.FFmpegOpusAudio(
                 audio_url,
-                before_options="-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5",
+                before_options="-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5"
             ),
             after=after
         )
+
+        autoplay_cog = self.bot.get_cog("Autoplay")
+        if autoplay_cog:
+            autoplay_cog.last_played[guild.id] = next_item
 
         await text_channel.send(f"🎶Reproduciendo: **{next_item['title']}**")
 
