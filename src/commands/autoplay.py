@@ -64,7 +64,6 @@ class Autoplay(commands.Cog):
         if not query:
             return None
 
-        # Variaciones de búsqueda para aumentar diversidad
         search_variants = [
             f"{query}",
             f"{query} remix",
@@ -77,13 +76,10 @@ class Autoplay(commands.Cog):
         ydl_opts = {"quiet": True, "noplaylist": True, "extract_flat": True}
         try:
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-                # Buscar hasta 20 resultados para más opciones
                 info = ydl.extract_info(f"ytsearch20:{search_query}", download=False)
                 if "entries" in info and info["entries"]:
-                    # Obtener historial reciente para evitar repeticiones
                     recent = getattr(self, "recent_ids", {}).get(item.get("guild_id"), [])
                     
-                    # Filtrar resultados
                     choices = [
                         e for e in info["entries"]
                         if e.get("id") != item.get("id") and e.get("id") not in recent
@@ -92,7 +88,6 @@ class Autoplay(commands.Cog):
                     if choices:
                         selected = random.choice(choices)
 
-                        # Actualizar historial
                         recent.append(selected["id"])
                         if len(recent) > 20:
                             recent.pop(0)
@@ -117,3 +112,4 @@ class Autoplay(commands.Cog):
 
 async def setup(bot):
     await bot.add_cog(Autoplay(bot))
+
