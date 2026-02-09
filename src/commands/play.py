@@ -8,7 +8,6 @@ import os
 import shutil
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
-from src.token_me import spotify_client_id, spotify_client_secret
 
 class Play(commands.Cog):
     def __init__(self, bot):
@@ -16,9 +15,12 @@ class Play(commands.Cog):
         self.queues = {}
         self.loop_enabled = {}
 
+        client_id = os.getenv("SPOTIPY_CLIENT_ID")
+        client_secret = os.getenv("SPOTIPY_CLIENT_SECRET")
+
         self.sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(
-            client_id=spotify_client_id,
-            client_secret=spotify_client_secret
+            client_id=client_id,
+            client_secret=client_secret
         ))
 
         self.ydlopts = {

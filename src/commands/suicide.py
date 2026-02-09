@@ -1,10 +1,15 @@
 import discord
 from discord.ext import commands
 from discord import app_commands
+import os
 
 class Suicide(commands.Cog):
     def __init__ (self, bot):
         self.bot = bot
+        # Calcula la ruta base de los assets dinámicamente
+        # Asume que la estructura es: src/commands/suicide.py -> assets/ está en la raíz
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        self.assets_path = os.path.join(current_dir, "..", "..", "assets")
 
     @app_commands.command(name="suicide", description="Especifica de que forma quieres morir")
     @app_commands.describe(mode="Tipo de muerte")
@@ -23,38 +28,47 @@ class Suicide(commands.Cog):
         ]
     )
     async def deadend(self, interaction: discord.Interaction, mode: app_commands.Choice[str]):
+        
+        def get_asset(filename):
+            return os.path.join(self.assets_path, filename)
+
+        # Verificación de seguridad por si la carpeta no existe en Railway
+        if not os.path.exists(self.assets_path):
+             return await interaction.response.send_message("❌ Error: No encuentro la carpeta de assets en el servidor.", ephemeral=True)
+
         if mode.value == "pastidead":
             resp = "se ha tomado las pastillas para dormir"
-            img = discord.File("./assets/pastis.jpg", filename="pastis.jpg")
+            img = discord.File(get_asset("pastis.jpg"), filename="pastis.jpg")
         elif mode.value == "drinkdead":
             resp = "se ha bebido todo el vodka que encontro"
-            img = discord.File("./assets/drinkdead.gif", filename="drinkdead.gif")
+            img = discord.File(get_asset("drinkdead.gif"), filename="drinkdead.gif")
         elif mode.value == "cocadead":
             resp = "ha esnifado por enciima de sus posibilidades"
-            img = discord.File("./assets/cocadead.gif", filename="cocadead.gif")
+            img = discord.File(get_asset("cocadead.gif"), filename="cocadead.gif")
         elif mode.value == "cutdead":
             resp = "se ha rajado todas las venas"
-            img = discord.File("./assets/venitas.jpg", filename="venitas.jpg")
+            img = discord.File(get_asset("venitas.jpg"), filename="venitas.jpg")
         elif mode.value == "lampdead":
             resp = "se colgo del techo"
-            img = discord.File("./assets/lampdead.jpg", filename="lampdead.jpg")
+            img = discord.File(get_asset("lampdead.jpg"), filename="lampdead.jpg")
         elif mode.value == "waterdead":
             resp = "se tiro al rio"
-            img = discord.File("./assets/waterdead.jpg", filename="waterdead.jpg")
+            img = discord.File(get_asset("waterdead.jpg"), filename="waterdead.jpg")
         elif mode.value == "shotdead":
             resp = "se voló la cabeza"
-            img = discord.File("./assets/shotdead.gif", filename="shotdead.gif")
+            img = discord.File(get_asset("shotdead.gif"), filename="shotdead.gif")
         elif mode.value == "dondecaemosgente":
             resp = "donde caemos gente?"
-            img = discord.File("./assets/chisa.gif", filename="chisa.gif")
+            img = discord.File(get_asset("chisa.gif"), filename="chisa.gif")
         elif mode.value == "cardead":
             resp = "se tiro a la carretera"
-            img = discord.File("./assets/truck-kun-truck.gif", filename="truck-kun-truck.gif")
+            img = discord.File(get_asset("truck-kun-truck.gif"), filename="truck-kun-truck.gif")
         elif mode.value == "yunodead":
             resp = "lo mato yuno (no debiste habertela follado yukiteru)"
-            img = discord.File("./assets/yuno.gif", filename="yuno.gif")
+            img = discord.File(get_asset("yuno.gif"), filename="yuno.gif")
         else:
             resp = "algo salio mal xd"
+            img = None
 
         await interaction.response.send_message(f"{interaction.user.mention} {resp}",file=img)
 
