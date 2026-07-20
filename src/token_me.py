@@ -1,3 +1,1 @@
-token_me = "MTQyMzIxNzgwNzI4NTI5MzA3Ng.GW031h.-N_YcilARxP2d7Knc8ACroB7jrphUmbk6XBcso"
-spotify_client_id="dd03bdf9d3b34f079e2b69b9360ade50"
-spotify_client_secret="3f784f37f3ab4c73af55b703b558bdb1"
+

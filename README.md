@@ -21,7 +21,7 @@
 El bot depende de tres librerías externas fundamentales. Puedes instalarlas todas juntas con el siguiente comando:
 
 ```bash
-pip install -U discord.py yt-dlp spotipy
+pip install -U discord.py yt-dlp spotipy "discord.py[voice]"
 ```
 
 ## 2. Configuración de FFmpeg (Requisito de Sistema)
