@@ -8,7 +8,7 @@ class Pene(commands.Cog):
 
     @app_commands.command(name="pene", description="adivina")
     async def pene(self, interaction):
-        await interaction.response.send_message(f"Hola... {interaction.user.mention} veo que sabes lo que buscas...", file = discord.File("./assets/lain.jpeg", filename="lain.jpeg"))
+        await interaction.response.send_message(f"Hola! {interaction.user.mention} esta funcion esta desabilitada temporalmente en funcion de ser mas normalito, disculpe las molestias")
 
 async def setup(bot):
     await bot.add_cog(Pene(bot))

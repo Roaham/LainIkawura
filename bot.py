@@ -4,6 +4,7 @@ import os
 from dotenv import load_dotenv
 import asyncio
 from pathlib import Path
+from src.token_me import token_me;
 
 banner = r""" 
  /$$                 /$$                                               
@@ -27,9 +28,7 @@ made by RoaHam
 """
 print(banner)
 
-# Cargar variables de entorno (Local y Railway)
-load_dotenv()
-TOKEN = os.getenv("DISCORD_TOKEN")
+TOKEN = token_me
 
 if not TOKEN:
     raise ValueError("No se ha encontrado el DISCORD_TOKEN en las variables de entorno.")
