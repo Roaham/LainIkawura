@@ -81,6 +81,4 @@ src/
 | `addRelatedTrack()` *(privado)* | Autoplay: añade una canción relacionada sin lanzar búsquedas duplicadas |
 | `handleDisconnect()` *(privado)* | Intenta reconectar tras una desconexión; si no, se cierra |
 
-## Despliegue (Railway / Nixpacks)
-
-`nixpacks.toml` instala Node 22, FFmpeg y yt-dlp, compila, registra los comandos y arranca. Define las variables de `.env.example` en el panel del servicio.
+La verdad que claude ha refactorizado todas mis funciones anteriores, ademas de actualizar y mejorar muchas de ellas, madre mia
